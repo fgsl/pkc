@@ -1,0 +1,58 @@
+#!/usr/bin/php
+<?php
+/**
+ * PHP Kubectl terminal console
+ * @author Flávio Gomes da Silva Lisboa <flavio.lisboa@fgsl.eti.br>
+ * @license https://www.gnu.org/licenses/lgpl-3.0.en.html
+ */
+if (ini_get('phar.readonly') == 'On' || ini_get('phar.readonly') == '1'){
+    echo str_pad('SETTING ERROR', 79,'=',STR_PAD_BOTH);
+    echo "\nThis script requires phar.readonly is equal Off\n";
+    echo str_repeat('=', 79);
+    exit;
+}
+chdir(__DIR__ . '/../');
+
+$pharFile = 'build/pkc.phar';
+
+// clean up
+if (file_exists($pharFile))
+{
+    unlink($pharFile);
+}
+
+if (file_exists($pharFile . '.gz'))
+{
+    unlink($pharFile . '.gz');
+}
+
+// create phar
+if (!file_exists('build')){
+    mkdir('build');
+}
+$phar = new Phar($pharFile);
+
+// start buffering. Mandatory to modify stub to add shebang
+$phar->startBuffering();
+
+// Create the default stub from main.php entrypoint
+$defaultStub = $phar->createDefaultStub('pkc.php');
+
+// Add the rest of the apps files
+$phar->buildFromDirectory(__DIR__ . '/../');
+
+// Customize the stub to add the shebang
+$stub = "#!/usr/bin/php \n" . $defaultStub;
+
+// Add the stub
+$phar->setStub($stub);
+
+$phar->stopBuffering();
+
+// plus - compressing it into gzip
+$phar->compressFiles(Phar::GZ);
+
+# Make the file executable
+chmod($pharFile, 0770);
+
+echo "$pharFile successfully created" . PHP_EOL;
