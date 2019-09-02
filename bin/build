@@ -5,6 +5,10 @@
  * @author Flávio Gomes da Silva Lisboa <flavio.lisboa@fgsl.eti.br>
  * @license https://www.gnu.org/licenses/lgpl-3.0.en.html
  */
+ /**
+ * This script worked at first time, but after it causes error mentioned in:
+ * https://bugs.php.net/bug.php?id=53467
+ */
 if (ini_get('phar.readonly') == 'On' || ini_get('phar.readonly') == '1'){
     echo str_pad('SETTING ERROR', 79,'=',STR_PAD_BOTH);
     echo "\nThis script requires phar.readonly is equal Off\n";

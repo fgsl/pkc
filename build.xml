@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * PHP Kubectl terminal console
+ * @author Flávio Gomes da Silva Lisboa <flavio.lisboa@fgsl.eti.br>
+ * @license https://www.gnu.org/licenses/lgpl-3.0.en.html
+ */ 
+ -->
+<project name="pkc" default="dist">
+
+	<!-- ============================================ -->
+	<!-- Target: prepare -->
+	<!-- ============================================ -->
+	<target name="prepare">
+		<echo msg="Making directory ./build" />
+		<mkdir dir="./build" />
+	</target>
+
+	<!-- ============================================ -->
+	<!-- (DEFAULT) Target: dist -->
+	<!-- ============================================ -->
+	<target name="dist" depends="prepare">
+		<pharpackage destfile="./build/pkc.phar" basedir="./" clistub="pkc.php" stub="stub.php">
+			<fileset dir="./">
+				<include name="**/**" />
+				<exclude name="stub.php"/>
+				<exclude name="bin/build"/>
+			</fileset>
+			<metadata>
+				<element name="version" value="1.0" />
+				<element name="authors">
+					<element name="Flávio Gomes da Silva Lisboa">
+						<element name="e-mail" value="flavio.lisboa@fgsl.eti.br" />
+					</element>
+				</element>
+			</metadata>
+		</pharpackage>
+		<chmod file="./build/pkc.phar" mode="0755" />
+		<delete dir="./tmp*" includeemptydirs="true"/>
+		<echo msg="Application compressed in build directory OK!" />
+	</target>
+</project>

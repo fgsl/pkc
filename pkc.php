@@ -10,6 +10,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use App\Command\GetNamespaceCommand;
 use Fgsl\Kubectl\KubectlProxy;
+use App\Command\GetResourceQuotaCommand;
 
 // checks if kubectl is installed
 if (!KubectlProxy::isInstalled()){
@@ -19,4 +20,5 @@ if (!KubectlProxy::isInstalled()){
 
 $application = new Application();
 $application->add(new GetNamespaceCommand());
+$application->add(new GetResourceQuotaCommand());
 $application->run();
