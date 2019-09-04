@@ -1,8 +1,8 @@
 {
 	"require" : {
 		"symfony/console" : "^4.3",
-		"fgsl/kubectl" : "1.1.0",
-		"phing/phing": "^2.16"
+		"fgsl/kubectl" : "1.1.1",
+		"phing/phing" : "^2.16"
 	},
 	"autoload" : {
 		"psr-4" : {

@@ -33,17 +33,15 @@ class GetResourceQuotaCommand extends Command
         addArgument('namespace', InputArgument::REQUIRED, 'The namespace of cluster.')
             ->
         // configure an option
-        addOption('object', 'o|O', InputOption::VALUE_NONE, 'all object attributes')
-            ->addOption('labels', 'l|L', InputOption::VALUE_NONE, 'only labels')
-            ->addOption('annotations', 'a|A', InputOption::VALUE_NONE, 'only annotations');
+        addOption('object', 'o|O', InputOption::VALUE_NONE, 'all object attributes');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $object = (boolean) $input->getOption('object') || (boolean) $input->getOption('labels') || (boolean) $input->getOption('annotations');
+            $object = (boolean) $input->getOption('object');
             $kn = KubectlProxy::getResourceQuota($input->getArgument('namespace'), $object);
-            $output->writeln($input->getOption('labels') ? $kn->getLabels() : ($input->getOption('annotations') ? $kn->getAnnotations() : $kn));
+            $output->writeln($kn);
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
         }

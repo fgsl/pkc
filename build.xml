@@ -36,7 +36,7 @@
 			</metadata>
 		</pharpackage>
 		<chmod file="./build/pkc.phar" mode="0755" />
-		<delete dir="./tmp*" includeemptydirs="true"/>
+		<exec command="rm -rf ./tmp.*" passthru="true" />
 		<echo msg="Application compressed in build directory OK!" />
 	</target>
 </project>

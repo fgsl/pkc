@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a4ac52f57620b43f91badfc4f96856e",
+    "content-hash": "8f5888c27243e39b3f7a807c2ece6794",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -64,16 +64,16 @@
         },
         {
             "name": "fgsl/kubectl",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fgsl/kubectl.git",
-                "reference": "a1afe2ed75d6ae10d72d38659919ede4c6ad0fc6"
+                "reference": "9efda447e8201dd6f43c5741b5482046a1942daa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fgsl/kubectl/zipball/a1afe2ed75d6ae10d72d38659919ede4c6ad0fc6",
-                "reference": "a1afe2ed75d6ae10d72d38659919ede4c6ad0fc6",
+                "url": "https://api.github.com/repos/fgsl/kubectl/zipball/9efda447e8201dd6f43c5741b5482046a1942daa",
+                "reference": "9efda447e8201dd6f43c5741b5482046a1942daa",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "kubectl",
                 "layer"
             ],
-            "time": "2019-09-02T19:17:03+00:00"
+            "time": "2019-09-04T18:33:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",
