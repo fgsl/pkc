@@ -1,7 +1,7 @@
 {
 	"require" : {
 		"symfony/console" : "^4.3",
-		"fgsl/kubectl" : "1.1.1",
+		"fgsl/kubectl" : "1.2.1",
 		"phing/phing" : "^2.16"
 	},
 	"autoload" : {
