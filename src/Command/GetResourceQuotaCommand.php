@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Fgsl\Kubectl\KubectlProxy;
 use Symfony\Component\Console\Input\InputOption;
+use App\Helper\Timer;
 
 class GetResourceQuotaCommand extends Command
 {
@@ -40,8 +41,11 @@ class GetResourceQuotaCommand extends Command
     {
         try {
             $object = (boolean) $input->getOption('object');
+            Timer::start();
             $kn = KubectlProxy::getResourceQuota($input->getArgument('namespace'), $object);
+            $time = Timer::stop();
             $output->writeln($kn);
+            $output->writeln("Elapsed time: {$time}s");
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
         }

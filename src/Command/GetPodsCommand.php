@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Fgsl\Kubectl\KubectlProxy;
 use Symfony\Component\Console\Input\InputOption;
+use App\Helper\Timer;
 
 class GetPodsCommand extends Command
 {
@@ -42,8 +43,11 @@ class GetPodsCommand extends Command
         try {
             $object = (boolean) $input->getOption('object');
             $showLabels = (boolean) $input->getOption('labels');
+            Timer::start();
             $kn = KubectlProxy::getPods($input->getArgument('namespace'), $object, $showLabels);
+            $time = Timer::stop();
             $output->writeln($kn);
+            $output->writeln("Elapsed time: {$time}s");
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
         }

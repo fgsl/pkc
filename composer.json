@@ -1,7 +1,18 @@
 {
+        "name" : "fgsl/pkc",
+	"description" : "PHP Kubectl Console Administrator",
+	"type" : "console",
+	"keywords" : [
+		"administration",
+		"console", 
+		"fgsl",
+		"kubectl"
+	],
+	"homepage" : "https://github.com/fgsl/pkc",
+"license" : "LGPL-3.0-only",	
 	"require" : {
 		"symfony/console" : "^4.3",
-		"fgsl/kubectl" : "1.2.1",
+		"fgsl/kubectl" : "1.3.0",
 		"phing/phing" : "^2.16"
 	},
 	"autoload" : {

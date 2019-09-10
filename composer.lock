@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea1968950fcd68e9d55fee290bad91ba",
+    "content-hash": "3cd51fb695ca7d45ee33b12d3059eae1",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -64,16 +64,16 @@
         },
         {
             "name": "fgsl/kubectl",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fgsl/kubectl.git",
-                "reference": "eaf8b2e965cae0adda3569649eaac13c204c5ccc"
+                "reference": "3824e54209ed835e90514fad22641ac45728a610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fgsl/kubectl/zipball/eaf8b2e965cae0adda3569649eaac13c204c5ccc",
-                "reference": "eaf8b2e965cae0adda3569649eaac13c204c5ccc",
+                "url": "https://api.github.com/repos/fgsl/kubectl/zipball/3824e54209ed835e90514fad22641ac45728a610",
+                "reference": "3824e54209ed835e90514fad22641ac45728a610",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "kubectl",
                 "layer"
             ],
-            "time": "2019-09-06T11:59:03+00:00"
+            "time": "2019-09-09T17:55:05+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -188,18 +188,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",

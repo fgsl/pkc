@@ -12,6 +12,10 @@ use App\Command\GetNamespaceCommand;
 use Fgsl\Kubectl\KubectlProxy;
 use App\Command\GetResourceQuotaCommand;
 use App\Command\GetPodsCommand;
+use App\Command\GetVolumesCommand;
+use App\Command\GetReplicaSetsCommand;
+use App\Command\CreatePodCommand;
+use App\Command\DeletePodCommand;
 
 // checks if kubectl is installed
 if (!KubectlProxy::isInstalled()){
@@ -23,4 +27,8 @@ $application = new Application();
 $application->add(new GetNamespaceCommand());
 $application->add(new GetResourceQuotaCommand());
 $application->add(new GetPodsCommand());
+$application->add(new GetVolumesCommand());
+$application->add(new GetReplicaSetsCommand());
+$application->add(new CreatePodCommand());
+$application->add(new DeletePodCommand());
 $application->run();

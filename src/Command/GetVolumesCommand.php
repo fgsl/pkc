@@ -14,39 +14,37 @@ use Fgsl\Kubectl\KubectlProxy;
 use Symfony\Component\Console\Input\InputOption;
 use App\Helper\Timer;
 
-class GetNamespaceCommand extends Command
+class GetVolumesCommand extends Command
 {
 
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'app:get-namespace';
+    protected static $defaultName = 'app:get-volumes';
 
     protected function configure()
     {
         $this->
         // the short description shown while running "php bin/console list"
-        setDescription('Get status and age of a namespace.')
+        setDescription('Get volumes of a module.')
             ->
         // the full command description shown when running the command with
         // the "--help" option
-        setHelp('This command allows you to get the status and age of a namespace')
+        setHelp('This command allows you to get volumes of a module.')
             ->
         // configure an argument
-        addArgument('namespace', InputArgument::REQUIRED, 'The namespace of cluster.')
+        addArgument('module', InputArgument::REQUIRED, 'The module of a namespace.')
             ->
         // configure an option
-        addOption('object', 'o|O', InputOption::VALUE_NONE, 'all object attributes')
-            ->addOption('labels', 'l|L', InputOption::VALUE_NONE, 'only labels')
-            ->addOption('annotations', 'a|A', InputOption::VALUE_NONE, 'only annotations');
+        addOption('object', 'o|O', InputOption::VALUE_NONE, 'all object attributes');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $object = (boolean) $input->getOption('object') || (boolean) $input->getOption('labels') || (boolean) $input->getOption('annotations');
+            $object = (boolean) $input->getOption('object');
             Timer::start();
-            $kn = KubectlProxy::getNamespace($input->getArgument('namespace'), $object);
+            $kn = KubectlProxy::getVolumes($input->getArgument('module'), $object);
             $time = Timer::stop();
-            $output->writeln($input->getOption('labels') ? $kn->getLabels() : ($input->getOption('annotations') ? $kn->getAnnotations() : $kn));
+            $output->writeln($kn);
             $output->writeln("Elapsed time: {$time}s");
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
